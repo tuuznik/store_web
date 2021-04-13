@@ -56,8 +56,8 @@ ROOT_URLCONF = 'storedjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'D:\Users\Aga\Dev\storedjango\src\templates'],
-        # 'DIRS': [BASE_DIR / 'templates'],
+        #'DIRS': [r'D:\Users\Aga\Dev\storedjango\src\templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -11,7 +11,12 @@ def contact_view(request, *args, **kwargs):
 
 
 def about_view(request, *args, **kwargs):
-    return render(request, 'about.html', {})
+    about_info = {
+        "text": "admin username",
+        "my_number": 123,
+        "my_list": [43, 12, 5]
+    }
+    return render(request, 'about.html', about_info)
 
 
 def social_view(request, *args, **kwargs):

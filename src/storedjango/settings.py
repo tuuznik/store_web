@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # project dedicated
     'products.apps.ProductsConfig',
+    'Blog.apps.BlogConfig',
+    'courses.apps.CoursesConfig',
     'pages',
 ]
 

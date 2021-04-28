@@ -16,13 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from src.pages.views import home_view, contact_view, about_view, social_view
+from django.conf.urls import url, include
 
 urlpatterns = [
     path('', home_view, name='home'),
-    path('contact/', contact_view),
-    path('about/', about_view),
+    path('contact/', contact_view, name='contact'),
+    path('about/', about_view, name='about'),
     path('social/', social_view),
     path('admin/', admin.site.urls),
-    path('products/', include('products.urls')),
+    path('products/', include('products.urls', namespace='products')),
     path('blog/', include('Blog.urls')),
-    path('courses/', include('courses.urls'))]
+    path('courses/', include('courses.urls')),
+    path('accounts/', include('profiles.urls',namespace='profiles'))
+]

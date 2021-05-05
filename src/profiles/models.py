@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User, BaseUserManager
 from django.db import models
 from django.db.models.signals import post_save
+from django_countries.fields import CountryField
 
 
 class UserManager(BaseUserManager):
@@ -43,6 +44,13 @@ class UserManager(BaseUserManager):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    dob = models.DateTimeField(blank=True, null=True)
+    bio = models.CharField(max_length=140, blank=True, null=True)
+    #avatar = fields.ImageField(upload_to='avatar_photos/', blank=True, null=True)
+    location = models.CharField(max_length=40, blank=True, null=True)
+    country = CountryField(blank=True, null=True)
+    fav_animal = models.CharField(max_length=40, blank=True, null=True)
+    hobby = models.CharField(max_length=40, blank=True, null=True)
 
 
 def create_user_profile(sender, instance, created, **kwargs):

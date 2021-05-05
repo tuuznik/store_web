@@ -2,5 +2,13 @@
 
 {% block content %}
 <h1>Profile</h1>
+<p>{{ user.username }}</p>
+<p>{{ user.first_name }} {{ user.last_name }}</p>
+{% if user.userprofile.dob %}
+<p>{{ user.userprofile.dob|date:"F d, Y" }}</p>
+{% else %}
+<p>Add date of birth by clicking <a href="#edit_button">edit button</a> below.</p>
+{% endif %}
 
+<a href = "{% url 'profiles:edit-profile' %}">Edit profile </a>
 {% endblock %}

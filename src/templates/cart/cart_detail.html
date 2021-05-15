@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Shopping cart</h1>
+<p>This is template</p>
+{% for instance in object.cart.values %}
+    <p>{{ instance.product_id }} - {{instance.name}}</p>
+    <a href="{% url 'item_clear' id=instance.product_id %}">Clear item</a>
+    <p>{{ instance.quantity }}</p>
+    <a href="{% url 'item_increment' id=instance.product_id %}">Increment item</a>
+    <a href="{% url 'item_decrement' id=instance.product_id %}">Decrement item</a>
+{% endfor %}
+
+<h1>{{ object.cart }}</h1>
+<a href="{% url 'cart_clear' %}">Clear Cart</a>
+<a href="{% url 'cart_buy' %}">Buy</a>
+
+{% endblock %}

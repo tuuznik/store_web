@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from src.pages.views import home_view, contact_view, about_view, social_view
+from src.pages.views import (home_view, contact_view, about_view, social_view, cart_add, item_clear,\
+                             item_increment, item_decrement, cart_clear, cart_detail) #, cart_buy)
 from django.conf.urls import url, include
 
 urlpatterns = [
@@ -27,5 +28,14 @@ urlpatterns = [
     path('products/', include('products.urls', namespace='products')),
     path('blog/', include('Blog.urls')),
     path('courses/', include('courses.urls')),
-    path('accounts/', include('profiles.urls',namespace='profiles'))
+    path('accounts/', include('profiles.urls',namespace='profiles')),
+    path('cart/add/<int:id>/', cart_add, name='cart_add'),
+    path('cart/item_clear/(?P<id>.*0)$/', item_clear, name='item_clear'),
+    path('cart/item_increment/(?P<id>.*0)$/',
+         item_increment, name='item_increment'),
+    path('cart/item_decrement/(?P<id>.*0)$/',
+         item_decrement, name='item_decrement'),
+    path('cart/cart_clear/', cart_clear, name='cart_clear'),
+    path('cart/cart-detail/', cart_detail, name='cart_detail'),
+    #path('cart/cart-buy/', cart_buy, name='cart_buy'),
 ]

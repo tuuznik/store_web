@@ -5,4 +5,6 @@
 <p>{% if object.description != None and object.description != '' %}{{object.description}}{% else %}Description coming soon.{% endif %}</p>
 
 <p>Price: {{object.price}}</p>
+
+<a href="{% url 'cart_add' object.id %}">Add To Cart</a>
 {% endblock %}

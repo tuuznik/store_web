@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # project dedicated
-    'products.apps.ProductsConfig',
+    'src.products.apps.ProductsConfig',
     'Blog.apps.BlogConfig',
     'courses.apps.CoursesConfig',
+    'warehouse.apps.WarehouseConfig',
     'pages',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -127,4 +129,6 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'
+
+CART_SESSION_ID = 'cart'
 

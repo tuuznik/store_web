@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from src.pages.views import (home_view, contact_view, about_view, social_view, cart_add, item_clear,\
-                             item_increment, item_decrement, cart_clear, cart_detail) #, cart_buy)
+                             item_increment, item_decrement, cart_clear, cart_detail, cart_buy)
 from django.conf.urls import url, include
 
 urlpatterns = [
@@ -37,5 +37,5 @@ urlpatterns = [
          item_decrement, name='item_decrement'),
     path('cart/cart_clear/', cart_clear, name='cart_clear'),
     path('cart/cart-detail/', cart_detail, name='cart_detail'),
-    #path('cart/cart-buy/', cart_buy, name='cart_buy'),
+    path('cart/cart-buy/', cart_buy, name='cart_buy'),
 ]

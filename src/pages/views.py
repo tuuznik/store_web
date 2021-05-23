@@ -80,10 +80,9 @@ def cart_detail(request):
     return render(request, "cart/cart_detail.html", context)
     #return render(request, 'cart/cart_detail.html')
 
-# @login_required(login_url="/accounts/login/")
-# def cart_buy(request):
-#     cart = Cart(request)
-#     #cart.buy()
-#     item = Item.objects.select_for_update().get(id=1)
-#     cart.clear()
-#     return redirect("cart_buy")
+@login_required(login_url="/accounts/login/")
+def cart_buy(request):
+    cart = Cart(request)
+    cart.buy()
+    cart.clear()
+    return redirect("home")

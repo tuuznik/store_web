@@ -61,6 +61,10 @@
         <li><a href="{% url 'contact' %}">Contact</a></li>
         {% if user.is_authenticated %}
         <li><a href = "{% url 'profiles:profile-detail' %}">Profile </a></li>
+        <li><a href = "{% url 'cart_detail' %}">Cart </a></li>
+        {% endif %}
+        {% if user.is_superuser %}
+        <li><a href = "{% url 'warehouse:warehouse-list' %}">Warehouse </a></li>
         {% endif %}
       </ul>
       <ul class="nav navbar-nav navbar-right">

@@ -19,6 +19,7 @@ class ProductForm(forms.ModelForm):
         #     raise forms.ValidationError("This is not a valid title!!")
         return title
 
+    # Meta.model.id
     # def clean_email(self, *args, **kwargs):
     #     email = self.cleaned_data.get("email")
     #     if not email.endswith("com"):

@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.shortcuts import Http404
 from .models import Product
 from .forms import ProductForm, RawProductForm
+from warehouse.models import Item
 
 
 # def product_create_view(request):
@@ -22,7 +23,8 @@ from .forms import ProductForm, RawProductForm
 def product_create_view(request):
     form = ProductForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        product = form.save()
+        Item.objects.create(product=product, quantity=0)
         form = ProductForm()
     context = {
         'form': form

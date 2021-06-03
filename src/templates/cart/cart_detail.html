@@ -13,5 +13,8 @@
 
 <p><a href="{% url 'cart_clear' %}">Clear Cart</a></p>
 <a href="{% url 'cart_buy' %}">Buy</a>
+{% for message in messages %}
+   <p>{{ message }}</p>
+{% endfor %}
 
 {% endblock %}

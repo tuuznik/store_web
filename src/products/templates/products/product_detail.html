@@ -7,4 +7,7 @@
 <p>Price: {{object.price}}</p>
 
 <a href="{% url 'cart_add' object.id %}">Add To Cart</a>
+{% for message in messages %}
+   <p>{{ message }}</p>
+{% endfor %}
 {% endblock %}

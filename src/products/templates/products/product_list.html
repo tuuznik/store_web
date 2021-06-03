@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h1>Products</h1>
+{% if user.is_superuser %}
+
+<button type="button"><a href = "{% url 'products:product-create' %}">Add product </a></button>
+{% endif %}
 
 {% for instance in object_list %}
     <p>{{ instance.id }} - <a href='{{ instance.get_absolute_url }}'>{{ instance.title }}</a></p>

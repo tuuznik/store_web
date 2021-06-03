@@ -29,6 +29,7 @@ urlpatterns = [
     path('blog/', include('Blog.urls')),
     path('courses/', include('courses.urls')),
     path('accounts/', include('profiles.urls',namespace='profiles')),
+    path('warehouse/', include('warehouse.urls',namespace='warehouse')),
     path('cart/add/<int:id>/', cart_add, name='cart_add'),
     path('cart/item_clear/(?P<id>.*0)$/', item_clear, name='item_clear'),
     path('cart/item_increment/(?P<id>.*0)$/',

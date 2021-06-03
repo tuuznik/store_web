@@ -23,6 +23,7 @@ def sign_up(request):
         if form.is_valid():
             form.save()
             user = authenticate(
+                username=form.cleaned_data['username'],
                 first_name=form.cleaned_data['first_name'],
                 last_name=form.cleaned_data['last_name'],
                 email=form.cleaned_data['email'],
@@ -33,7 +34,7 @@ def sign_up(request):
                 request,
                 "You're now a user! You've been signed in, too."
             )
-            return HttpResponseRedirect(reverse('accounts:profile'))
+            return HttpResponseRedirect(reverse('profiles:profile-detail'))
     return render(request, 'profiles/sign_up.html', {'form': form})
 
 @login_required
@@ -57,3 +58,9 @@ def edit_user_profile(request):
             return HttpResponseRedirect(reverse('profiles:profile-detail'))
     return render(request, 'profiles/edit_profile.html',
         {'form1': form1, 'form2': form2})
+
+@login_required
+def delete_user(request):
+    user = request.user
+    user.delete()
+    return redirect("home")

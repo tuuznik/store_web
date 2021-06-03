@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
+from django.contrib import messages
 from products.models import Product
 from warehouse.models import Item
 from django.db import transaction
@@ -33,8 +34,12 @@ def cart_add(request, id):
     cart = Cart(request)
     with transaction.atomic():
         product = Product.objects.select_for_update().get(id=id)
-    cart.add(product=product)
-    return redirect("cart_detail")
+    ret  = cart.add(product=product)
+    if ret:
+        return redirect("cart_detail")
+    else:
+        messages.error(request, "You can't add item to the cart. Not enough items in stock")
+        return redirect("products:product-detail", product_id=id)
 
 
 @login_required(login_url="/accounts/login/")
@@ -83,6 +88,10 @@ def cart_detail(request):
 @login_required(login_url="/accounts/login/")
 def cart_buy(request):
     cart = Cart(request)
-    cart.buy()
-    cart.clear()
-    return redirect("home")
+    res = cart.buy()
+    if res:
+        cart.clear()
+        return redirect("home")
+    else:
+        messages.error(request, "Not enough items in stock")
+        return redirect("cart_detail")

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Blog.apps.BlogConfig',
     'courses.apps.CoursesConfig',
     'warehouse.apps.WarehouseConfig',
+    'categories.apps.CategoriesConfig',
     'pages',
     'cart',
 ]

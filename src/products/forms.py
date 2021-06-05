@@ -1,5 +1,6 @@
 from django import forms
 from .models import Product
+from categories.models import Category
 
 
 class ProductForm(forms.ModelForm):
@@ -8,10 +9,11 @@ class ProductForm(forms.ModelForm):
         attrs={"placeholder": "Your description"}))  # required set True by default
     # email = forms.EmailField()
     price = forms.DecimalField(initial=199.99)
+    category = forms.ModelChoiceField(queryset=Category.objects.all())
 
     class Meta:
         model = Product
-        fields = ['title', 'description', 'price']
+        fields = ['title', 'description', 'price', 'category']
 
     def clean_title(self, *args, **kwargs):
         title = self.cleaned_data.get("title")

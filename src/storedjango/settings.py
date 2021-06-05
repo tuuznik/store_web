@@ -87,8 +87,15 @@ WSGI_APPLICATION = 'storedjango.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'store_db',
+        'USER' : 'postgres',
+        'PASSWORD' : 'NOCOJEST',
+        'HOST' : 'localhost',
+        'PORT' : '5432',
+        'ATOMIC_REQUESTS' : True
     }
 }
 
@@ -135,5 +142,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'
 
-CART_SESSION_ID = 'cart'
+CART_SESSION_ID = 'cart_temp'
 

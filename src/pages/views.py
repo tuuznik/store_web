@@ -38,7 +38,7 @@ def cart_add(request, id):
     if ret:
         return redirect("cart_detail")
     else:
-        messages.error(request, "You can't add item to the cart. Not enough items in stock")
+        messages.error(request, "You can't add item to the cart_temp. Not enough items in stock")
         return redirect("products:product-detail", product_id=id)
 
 
@@ -83,7 +83,7 @@ def cart_detail(request):
         'object': cart
     }
     return render(request, "cart/cart_detail.html", context)
-    #return render(request, 'cart/cart_detail.html')
+    #return render(request, 'cart_temp/cart_detail.html')
 
 @login_required(login_url="/accounts/login/")
 def cart_buy(request):

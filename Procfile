@@ -1,1 +1,1 @@
-web: gunicorn storedjango.wsgi --log-file
+web: gunicorn src.storedjango.wsgi

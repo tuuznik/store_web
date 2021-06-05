@@ -157,7 +157,8 @@ ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'glacial-ravine-55659.hero
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 #location where django collect all static files
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
